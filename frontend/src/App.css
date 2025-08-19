@@ -1,0 +1,62 @@
+/* Ratings */
+
+/* Container for the outer rating stars (empty stars) */
+.rating-outer {
+  display: inline-block; /* Makes the element inline-level but allows width/height */
+  position: relative;    /* Allows positioning of inner stars absolutely within this container */
+  font-family: FontAwesome; /* Uses FontAwesome icons for stars */
+  color: rgb(224, 39, 70, 1); /* Sets default color of stars (red/pink shade) */
+}
+
+/* Adds the visual empty stars before the rating-inner layer */
+.rating-outer::before {
+  content: '\f006 \f006 \f006 \f006 \f006'; /* FontAwesome unicode for empty star, repeated 5 times */
+  /* content: '&#9734'; */ /* Alternative: HTML entity for empty star (commented out) */
+}
+
+/* Container for filled stars overlaying the outer stars */
+.rating-inner {
+  position: absolute;   /* Positioned absolutely relative to .rating-outer */
+  top: 0;               /* Aligns the top edge with the container */
+  left: 0;              /* Aligns the left edge with the container */
+  white-space: nowrap;  /* Prevent line breaks, keeps stars in a single line */
+  overflow: hidden;     /* Hides stars that exceed the width (for partial star ratings) */
+  width: 0;             /* Initially hidden, width will be adjusted to show filled stars */
+}
+
+/* Adds the visual filled stars inside the rating-inner container */
+.rating-inner::before {
+  content: '\f005 \f005 \f005 \f005 \f005'; /* FontAwesome unicode for filled star, repeated 5 times */
+  color: rgb(224, 39, 70, 1); /* Color of filled stars */
+}
+
+/* Container for the star list */
+.stars {
+  height: max-content;         /* Adjusts height to fit the content */
+  display: flex;               /* Uses flexbox layout for aligning stars */
+  align-items: center;         /* Vertically centers the stars */
+  padding-left: 0;             /* Removes default left padding */
+}
+
+/* Individual star styling */
+.star {
+  display: inline;             /* Makes each star inline */
+  list-style: none;            /* Removes default list bullet if used in a list */
+  font-size: 1.8rem;           /* Sets size of the star */
+  padding-left: 0.4rem;        /* Adds spacing between stars */
+}
+
+/* Removes left padding for the first star */
+.star:first-child {
+  padding-left: 0;             /* No extra spacing for the first star */
+}
+
+/* Stripe payment input base style */
+.StripeElement {
+  border-bottom: 2px solid #d1d5db; /* Adds a light gray bottom border */
+}
+
+/* Stripe input style when invalid input is detected */
+.StripeElement--invalid {
+  border-bottom: 2px solid red; /* Changes bottom border to red on validation error */
+}
